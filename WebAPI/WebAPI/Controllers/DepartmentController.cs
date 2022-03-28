@@ -17,8 +17,8 @@ namespace WebAPI.Controllers
         {
             _configuration = configuration;
         }
+        
         [HttpGet]
-
         public JsonResult Get()
         {
             MongoClient dbclient = new MongoClient(_configuration.GetConnectionString("EmployeeAppCon"));
@@ -28,9 +28,7 @@ namespace WebAPI.Controllers
             return new JsonResult(dblist);
         }
 
-
         [HttpPost]
-
         public JsonResult Post(Department dep)
         {
             MongoClient dbclient = new MongoClient(_configuration.GetConnectionString("EmployeeAppCon"));
@@ -43,7 +41,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-
         public JsonResult Put(Department dep)
         {
             MongoClient dbclient = new MongoClient(_configuration.GetConnectionString("EmployeeAppCon"));
@@ -57,7 +54,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("(id)")]
-
         public JsonResult Delete(Department dep)
         {
             MongoClient dbclient = new MongoClient(_configuration.GetConnectionString("EmployeeAppCon"));
