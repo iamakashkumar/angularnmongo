@@ -1,3 +1,12 @@
+<label class="col-sm-2 col-form-label">Department</label>
+    <div class="col-sm-2">
+       <select class="form-control" [(ngModel)]="Department">
+           <option>--Select--</option>
+           <option *ngFor="let depName of DepartmentsList">
+               {{depName.DepartmentName}}
+           </option>
+       </select>
+    </div>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary float-right m-2" 
