@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Sandbox\\Akash\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj": {}
+    "D:\\Sandbox\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\Sandbox\\Akash\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj": {
+    "D:\\Sandbox\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Sandbox\\Akash\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "D:\\Sandbox\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "D:\\Sandbox\\Akash\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\PragyanKaushiley\\.nuget\\packages\\",
-        "outputPath": "D:\\Sandbox\\Akash\\angularnmongo\\WebAPI\\WebAPI\\obj\\",
+        "projectPath": "D:\\Sandbox\\angularnmongo\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\akashkumar\\.nuget\\packages\\",
+        "outputPath": "D:\\Sandbox\\angularnmongo\\WebAPI\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PragyanKaushiley\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akashkumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
