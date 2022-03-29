@@ -58,6 +58,7 @@ export class ShowDepComponent implements OnInit {
   refreshDepList() {
     debugger;
     this.service.getDepList().subscribe(data => {
+      debugger;
       this.DepartmentList = data;
       this.DepartmentListWithoutFilter = data;
     });
