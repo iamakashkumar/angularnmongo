@@ -20,7 +20,6 @@ export class AddEditDepComponent implements OnInit {
   }
 
   addDepartment() {
-    debugger;
     var val = {
       DepartmentId: this.DepartmentId,
       DepartmentName: this.DepartmentName
@@ -31,7 +30,6 @@ export class AddEditDepComponent implements OnInit {
   }
 
   updateDepartment() {
-    debugger;
     var val = {
       DepartmentId: this.DepartmentId,
       DepartmentName: this.DepartmentName

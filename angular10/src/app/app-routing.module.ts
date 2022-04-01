@@ -6,8 +6,8 @@ import {DepartmentComponent} from './department/department.component';
 
 
 const routes: Routes = [
-{path:'employee',component:EmployeeComponent},
-{path:'department',component:DepartmentComponent}
+{path:'',component:EmployeeComponent},
+// {path:'department',component:DepartmentComponent}
 
 ];
 

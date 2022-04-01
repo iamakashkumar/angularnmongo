@@ -13,12 +13,10 @@ export class SharedService {
   constructor(private http: HttpClient) { }
 
   getDepList(): Observable<any[]> {
-    debugger;
     return this.http.get<any>(this.APIUrl + '/Department');
   }
 
   addDepartment(val: any) {
-    debugger;
     return this.http.post(this.APIUrl + '/Department', val);
   }
 

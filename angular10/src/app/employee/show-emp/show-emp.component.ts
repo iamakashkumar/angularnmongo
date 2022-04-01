@@ -11,22 +11,29 @@ export class ShowEmpComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
-  EmployeeList:any=[];
-  DepartmentsList:any=[];
-  EmployeeNameFilter:any;
-  Department:any;
-  EmployeeIDFilter:any;
+  EmployeeList: any = [];
+  DepartmentsList: any = [];
+  EmployeeNameFilter: any;
+  Department: any;
+  EmployeeIDFilter: any;
   EmployeeListWithoutFilter: any = [];
+  DepartmentIdFilter: any;
+  DepartmentListWithoutFilter: any = [];
+  DepartmentNameFilter: any;
+ 
 
 
 
-  ModalTitle:string;
+
+  ModalTitle: string;
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
 
   ngOnInit(): void {
     this.refreshEmpList();
+    this.refreshDepList();
   }
+
 
   addClick(){
     this.emp={
@@ -69,10 +76,20 @@ export class ShowEmpComponent implements OnInit {
     });
   }
 
+  refreshDepList(){
+    this.service.getDepList().subscribe(data=>{
+      this.DepartmentsList=data;
+
+    });
+  }
+
  
   FilterFn() {
     var EmployeetIdFilter = this.EmployeeIdFilter;
     var EmployeeNameFilter = this.EmployeeNameFilter;
+    var DepartmentIdFilter = this.DepartmentIdFilter;
+    var DepartmentNameFilter = this.DepartmentNameFilter;
+
 
     this.EmployeeList = this.EmployeeListWithoutFilter.filter(function (el) {
       return el.EmployeeId.toString().toLowerCase().includes(
@@ -82,10 +99,27 @@ export class ShowEmpComponent implements OnInit {
           EmployeeNameFilter.toString().trim().toLowerCase()
         )
     });
+
+    this.DepartmentsList = this.DepartmentListWithoutFilter.filter(function (el) {
+      return el.DepartmentId.toString().toLowerCase().includes(
+        DepartmentIdFilter.toString().trim().toLowerCase()
+      ) &&
+        el.DepartmentName.toString().toLowerCase().includes(
+          DepartmentNameFilter.toString().trim().toLowerCase()
+        )
+    });
   }
 
   sortResult(prop, asc) {
     this.EmployeeList = this.EmployeeListWithoutFilter.sort(function (a, b) {
+      if (asc) {
+        return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+      } else {
+        return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+      }
+    })
+
+    this.DepartmentsList = this.DepartmentListWithoutFilter.sort(function (a, b) {
       if (asc) {
         return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
       } else {
