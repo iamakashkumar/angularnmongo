@@ -28,10 +28,13 @@ export class ShowEmpComponent implements OnInit {
   ModalTitle: string;
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
+  ActivateAddEditDepComp: boolean = false;
+  dep: any;
 
   ngOnInit(): void {
     this.refreshEmpList();
     this.refreshDepList();
+
   }
 
 
@@ -41,7 +44,7 @@ export class ShowEmpComponent implements OnInit {
       EmployeeName:"",
       Department:"",
       DateOfJoining:"",
-      PhotoFileName:"anonymous.png"
+      
     }
     this.ModalTitle="Add Employee";
     this.ActivateAddEditEmpComp=true;
@@ -55,8 +58,16 @@ export class ShowEmpComponent implements OnInit {
     this.ActivateAddEditEmpComp=true;
   }
 
+  editClickDep(item){
+    console.log(item);
+    this.emp=item;
+    this.ModalTitle="Edit Department";
+    this.ActivateAddEditEmpComp=true;
+  }
+
   deleteClick(item){
     if(confirm('Are you sure??')){
+      debugger;
       this.service.deleteEmployee(item.EmployeeId).subscribe(data=>{
         alert(data.toString());
         this.refreshEmpList();
@@ -73,41 +84,57 @@ export class ShowEmpComponent implements OnInit {
   refreshEmpList(){
     this.service.getEmpList().subscribe(data=>{
       this.EmployeeList=data;
+      this.EmployeeListWithoutFilter=data;
     });
   }
 
   refreshDepList(){
     this.service.getDepList().subscribe(data=>{
       this.DepartmentsList=data;
-
+      this.DepartmentListWithoutFilter=data;
     });
+  }
+
+  AddClick(dep) {
+    this.dep = {
+      DepartmentId: 0,
+      DepartmentName: ""
+    }
+    this.ModalTitle = "Department";
+    this.ActivateAddEditDepComp = true;
+
   }
 
  
   FilterFn() {
-    var EmployeetIdFilter = this.EmployeeIdFilter;
-    var EmployeeNameFilter = this.EmployeeNameFilter;
-    var DepartmentIdFilter = this.DepartmentIdFilter;
+    debugger;
+    // var EmployeetIdFilter = this.EmployeeIdFilter;
+    // var EmployeeNameFilter = this.EmployeeNameFilter;
+    // var DepartmentIdFilter = this.DepartmentIdFilter;
     var DepartmentNameFilter = this.DepartmentNameFilter;
 
 
     this.EmployeeList = this.EmployeeListWithoutFilter.filter(function (el) {
       return el.EmployeeId.toString().toLowerCase().includes(
-        EmployeetIdFilter.toString().trim().toLowerCase()
-      ) &&
-        el.EmployeeName.toString().toLowerCase().includes(
-          EmployeeNameFilter.toString().trim().toLowerCase()
+        DepartmentNameFilter.toString().trim().toLowerCase()
+      ) ||
+       el.EmployeeName.toString().toLowerCase().includes(
+        DepartmentNameFilter.toString().trim().toLowerCase()
+        ) ||
+       el.Department.toString().toLowerCase().includes(
+        DepartmentNameFilter.toString().trim().toLowerCase()
         )
     });
 
-    this.DepartmentsList = this.DepartmentListWithoutFilter.filter(function (el) {
-      return el.DepartmentId.toString().toLowerCase().includes(
-        DepartmentIdFilter.toString().trim().toLowerCase()
-      ) &&
-        el.DepartmentName.toString().toLowerCase().includes(
-          DepartmentNameFilter.toString().trim().toLowerCase()
-        )
-    });
+    // this.DepartmentsList = this.DepartmentListWithoutFilter.filter(function (el) {
+       
+    //   return el.DepartmentId.toString().toLowerCase().includes(
+    //     DepartmentNameFilter.toString().trim().toLowerCase()
+    //   ) ||
+    //   el.DepartmentName.toString().toLowerCase().includes(
+    //       DepartmentNameFilter.toString().trim().toLowerCase()
+    //     )
+    // });
   }
 
   sortResult(prop, asc) {

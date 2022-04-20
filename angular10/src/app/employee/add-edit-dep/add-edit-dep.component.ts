@@ -40,3 +40,18 @@ export class AddEditDepComponent implements OnInit {
   }
 
 }
+
+editClick(item) {
+  this.dep = item;
+  this.ModalTitle = "Edit Department";
+  this.ActivateAddEditDepComp = true;
+}
+
+deleteClick(item) {
+  if (confirm('Are you sure??')) {
+    this.service.deleteDepartment(item.DepartmentId).subscribe(data => {
+      alert(data.toString());
+      this.refreshDepList();
+    })
+  }
+}

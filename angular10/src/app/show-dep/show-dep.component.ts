@@ -29,7 +29,7 @@ export class ShowDepComponent implements OnInit {
       DepartmentId: 0,
       DepartmentName: ""
     }
-    this.ModalTitle = "Add Department";
+    this.ModalTitle = "Login";
     this.ActivateAddEditDepComp = true;
 
   }

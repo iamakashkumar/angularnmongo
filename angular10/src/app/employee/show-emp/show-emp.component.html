@@ -1,5 +1,14 @@
-<label class="col-sm-2 col-form-label">Department</label>
+<label class="col-sm-2 col-form-label d-flex flex-row bd-highlight mb-3" style="margin-left: 100px;">Department
+</label>
+
 <div class="row">
+  <button type="button" class="btn btn-primary m-2" 
+            data-toggle="modal" data-target="#exampleModalDep"
+            (click)="AddClick(dep)"
+            data-backdrop="static" data-keyboard="false"
+            >
+                Add Department
+              </button>
   <div class="col-sm-8">
     <div class="row">
       <div class="col-sm-8 col-lg-6">
@@ -7,17 +16,12 @@
           <option *ngFor="let depName of DepartmentsList" >
             {{depName.DepartmentName}}
           </option>
-          <option><button type="button" class="btn btn-primary float-right m-2" 
-            data-toggle="modal" data-target="#exampleModal"
-            (click)="addClick()"
-            data-backdrop="static" data-keyboard="false"
-            >
-                Add Department
-              </button></option>
         </select>
       </div>
       <div class="col-sm-8 col-lg-6">
-        <input [(ngModel)]="EmployeeNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+        <!-- <input [(ngModel)]="EmployeeNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter"> -->
+        <input [(ngModel)]="DepartmentNameFilter" class="form-control"
+                (keyup)="FilterFn()" placeholder="Filter">
       </div>
     </div>
   </div>
@@ -36,6 +40,7 @@
           d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z" />
       </svg>
     </button>
+    
   </div>
   <div class="col-sm-2 ">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="addClick()"
@@ -45,14 +50,8 @@
   </div>
 </div>
 <br>
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary float-right m-2" 
-data-toggle="modal" data-target="#exampleModal"
-(click)="addClick()"
-data-backdrop="static" data-keyboard="false"
->
-    Add Employee
-  </button> -->
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -73,6 +72,28 @@ data-backdrop="static" data-keyboard="false"
   </div>
 </div>
 
+<!-- Modal dep-->
+<div class="modal fade" id="exampleModalDep" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+   <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+       <button type="button" class="close" 
+       data-dismiss="modal" aria-label="Close"
+       (click)="closeClick()" >
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div> 
+     <div class="modal-body">
+         <app-add-edit-dep [dep]="dep" *ngIf="ActivateAddEditDepComp">
+         </app-add-edit-dep>
+     </div>
+   </div>
+  </div>
+
+  </div>
+
+ 
 
 
 <table class="table table-striped">
